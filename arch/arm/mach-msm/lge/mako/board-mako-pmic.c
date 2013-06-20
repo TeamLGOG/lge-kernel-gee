@@ -915,7 +915,9 @@ void __init apq8064_init_pmic(void)
 	pmic_reset_irq = PM8921_IRQ_BASE + PM8921_RESOUT_IRQ;
 
 	mako_set_adcmap();
-	mako_fixed_leds();
+	#ifndef CONFIG_MACH_APQ8064_J1A
+		mako_fixed_leds();
+	#endif
 	mako_fixup_wlc_gpio();
 
 	apq8064_device_ssbi_pmic1.dev.platform_data =
