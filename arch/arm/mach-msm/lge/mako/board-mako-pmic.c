@@ -540,7 +540,7 @@ static __init void mako_fixup_wlc_gpio(void) {
 
 #else
 static int wireless_charger_is_plugged(void) { return 0; }
-static __init void mako_set_wlc_gpio(void) { }
+//static __init void mako_set_wlc_gpio(void) { }
 #endif
 
 /*
@@ -917,8 +917,8 @@ void __init apq8064_init_pmic(void)
 	mako_set_adcmap();
 	#ifndef CONFIG_MACH_APQ8064_J1A
 		mako_fixed_leds();
+		mako_fixup_wlc_gpio();
 	#endif
-	mako_fixup_wlc_gpio();
 
 	apq8064_device_ssbi_pmic1.dev.platform_data =
 		&apq8064_ssbi_pm8921_pdata;
